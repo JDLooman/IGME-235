@@ -1,0 +1,40 @@
+figure img{
+    width: 10vw;
+    float: right;
+    padding: 1rem;
+}
+main {
+    font-family: Arial, sans-serif;
+    border: 1px solid black;
+    margin: 0 auto 0 auto;
+    width: 80vw;
+    padding: 2em 4em 2em 4em;
+    background-color: #fbb13c;
+}
+body{
+    background-color: #57b8ff;
+}
+.GitHub{
+    background-color: #b66d0d;
+    padding: 2rem 1rem;
+    margin: 0 auto;
+    width: 100%;
+    border: 1px solid black;
+}
+.Bio{
+    padding: 2rem 1rem 4rem 1rem;
+    margin: 0 auto;
+    width: 100%;   
+}
+.Projects{
+    padding: 2rem 1rem;
+}
+a:link, a:visited{
+    color: #2176ae;
+}
+a:hover, a:active, a:focus{
+    color: #331831;
+}
+hr{
+    border: 1px solid black;
+}
