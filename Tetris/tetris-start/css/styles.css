@@ -13,7 +13,7 @@ h3{
 }
 figure{
     float: right;
-    width: 0 1 650px;
+    max-width: 650px;
     margin: auto;    
 }
 figure img{
@@ -23,7 +23,8 @@ figure img{
 .tet{
     float: left;
     border: 2px solid red;
-    width: 40%;  
+    width: 40%;
+    flex: 0 1 450px;
 }
 footer{
     position: fixed;
@@ -35,8 +36,22 @@ header, main, footer{
     width: 90vw;
     margin: auto;
 }
-.tetlist{
+#tetlist{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    text-align: center;
+}
+.tet img{
+    width: 60%;
+}
+span{
+    display: block;
+    margin: 1rem;
+    font-size: 20px;
+    font-weight: bold;
+}
+.aliases{
+    text-align: left;
+    margin: 1rem;
 }
