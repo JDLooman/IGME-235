@@ -116,3 +116,22 @@ ul.menu li:hover ul {
 img:hover {
     transform: rotate(-90deg);
 }
+#j{
+    grid-column: 5;
+    grid-row: 5;
+    transform: rotate(180deg);
+}
+#s{
+    grid-column: 4;
+    grid-row: 4;
+    transform: rotate(-90deg);
+}
+#t{
+    grid-column: 5;
+    grid-row: 2;
+}
+#l{
+    grid-column: 1/2;
+    grid-row: 5;
+    transform: rotate(-90deg);
+}
