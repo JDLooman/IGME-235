@@ -1,0 +1,18 @@
+#wrapper{
+    display: grid;
+    grid-template-areas: 
+    "side header header name name side"
+    "side desc desc tree tree side"
+    "back back back back back back"
+    "side pic words pic words side"
+    "side footer footer copy copy side";
+    grid-template-rows: 100px 3fr 3fr 3fr 200px;
+    grid-template-columns: 200px 2fr 2fr 2fr 2fr 200px;
+}
+#introduction{
+    grid-area: header;
+}
+#name{
+    grid-area: name;
+
+}
