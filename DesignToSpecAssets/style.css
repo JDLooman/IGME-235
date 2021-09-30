@@ -1,18 +1,58 @@
 #wrapper{
     display: grid;
     grid-template-areas: 
-    "side header header name name side"
-    "side desc desc tree tree side"
-    "back back back back back back"
-    "side pic words pic words side"
-    "side footer footer copy copy side";
-    grid-template-rows: 100px 3fr 3fr 3fr 200px;
-    grid-template-columns: 200px 2fr 2fr 2fr 2fr 200px;
+    "header"
+    "description"
+    "photo"
+    "items"
+    "footer";
+    grid-template-rows: .5fr 5fr 10fr 10fr 2fr;
 }
 #introduction{
     grid-area: header;
+    display: flex;
+    padding: 0 1rem;
+    width: 10vw;
 }
 #name{
-    grid-area: name;
-
+    grid-area: header;
+    display: flex;
+    padding: 0 3rem;
+    margin-top: 1rem;
+    justify-content: right;
+    justify-self: right;
+    width: 10vw;
+}
+#description{
+    grid-area: description;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+#description article{
+    border: 1px solid black;
+    flex: 0 0 500px;
+    flex-flow: row wrap;
+    margin: 1rem;
+}
+#background{
+    grid-area: photo;
+    border: 1px solid black;
+}
+#items{
+    grid-area: items;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+#items article{
+    border: 1px solid black;
+    flex: 0 1 21%;
+    flex-flow: row wrap;
+    margin: 1rem;
+    position: relative;
+}
+#footer{
+    grid-area: footer;
+    border: 1px solid black;
 }
