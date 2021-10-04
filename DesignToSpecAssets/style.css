@@ -6,22 +6,24 @@
     "photo"
     "items"
     "footer";
-    grid-template-rows: .5fr 5fr 10fr 10fr 2fr;
+    grid-template-rows: .5fr 5fr 10fr 7.5fr 350px;
+    background-color: #35363d;
 }
-#introduction{
+#title{
     grid-area: header;
     display: flex;
     padding: 0 1rem;
-    width: 10vw;
+    width: auto;
+    background-color: #686868;
 }
 #name{
     grid-area: header;
     display: flex;
     padding: 0 3rem;
     margin-top: 1rem;
-    justify-content: right;
     justify-self: right;
-    width: 10vw;
+    justify-content: end;
+    background-color: #686868;
 }
 #description{
     grid-area: description;
@@ -30,14 +32,13 @@
     justify-content: center;
 }
 #description article{
-    border: 1px solid black;
     flex: 0 0 500px;
     flex-flow: row wrap;
     margin: 1rem;
+    padding: 2rem;
 }
 #background{
     grid-area: photo;
-    border: 1px solid black;
 }
 #items{
     grid-area: items;
@@ -46,13 +47,81 @@
     justify-content: center;
 }
 #items article{
-    border: 1px solid black;
-    flex: 0 1 21%;
+    flex: 0 0 21%;
     flex-flow: row wrap;
     margin: 1rem;
     position: relative;
 }
+.text{
+    background-color: #686868;
+    font-size: 12px;
+}
+.images{
+    background-color: #324e44;
+    text-align: center;
+    justify-content: center;
+    margin-top: 100%;
+    border: 10px solid #ffffff;
+}
+.center{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 35%;
+    width: 50%;
+}
+.tree{
+    background-image: linear-gradient(to bottom right, #E8FDF5, #244D3E);
+    border: 10px solid #ffffff;
+}
+p{
+    position: relative;
+    top: 2rem;
+    font-size: 24px;
+}
+@font-face {
+    font-family: 'dogicaregular';
+    src: url('../DesignToSpecAssets/Fonts/dogica-webfont.woff2') format('woff2'),
+         url('../DesignToSpecAssets/Fonts/dogica-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'retro_computerregular';
+    src: url('../DesignToSpecAssets/Fonts/retro_computer_personal_use-webfont.woff2') format('woff2'),
+         url('../DesignToSpecAssets/Fonts/retro_computer_personal_use-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+html{
+    font-family: 'dogicaregular', sans-serif;
+    color: white;
+}
+#botLeft{
+    grid-area: footer;
+    display: flex;
+    padding: 0 3rem;
+    margin-top: 1rem;
+    position: relative;
+    top: 100px;
+    width: 400px;
+    font-size: 24px;
+}
+#botRight{
+    grid-area: footer;
+    display: flex;
+    padding: 0 3rem;
+    margin-top: 1rem;
+    position: relative;
+    left: 75%;
+    width: 400px;
+    font-size: 24px;
+}
 #footer{
     grid-area: footer;
-    border: 1px solid black;
+    border-top: 5px solid #ffffff;
+    background-image: url("Assets/trees.jpg");
+    background-position: 0 -850px;
 }
