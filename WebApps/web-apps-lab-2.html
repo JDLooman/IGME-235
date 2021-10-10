@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>DOM-3</title>
+	<style>
+		body{border:1px solid gray;}
+		p b{transform: rotate(20deg)}
+	</style>  
+</head>
+<body>
+<h1>My Page</h1>
+<h2>Info</h2>
+<h2>Pictures</h2>
+<h2>More Info</h2>
+<p>Blah <b>Blah</b> Blah</p>
+<p>Blah <b>Blah</b> Blah</p>
+<p id="lastParagraph">Blah <b>Blah</b> Blah</p>
+<footer>Copyright &copy; <b>20XX</b></footer>
+<script>
+	"use strict"; 
+    let h1 = document.querySelector("h1");
+    let allH2 = document.querySelectorAll("h2");
+    let body = document.body;
+    let p = document.querySelectorAll("p");
+    let a = document.createElement('a');
+    let footer = document.querySelector("Footer");
+
+	h1.innerHTML = "My UFO Page";
+    allH2[0].innerHTML = "My UFO Info";
+    allH2[1].innerHTML = "My UFO Pictures";
+    allH2[2].innerHTML = "";
+    a.id ='link';
+    a.title = "http://www.nuforc.org/";
+    a.href = "http://www.nuforc.org/";
+    p[0].innerHTML = "Report your UFO sightings here: <a href='http://www.nuforc.org'>http://www.nuforc.org</a>";
+    p[1].innerHTML = "";
+    p[2].innerHTML = "<img src='UFO.jpg' alt='UFO picture'>";
+    footer.innerHTML = "&copy 2021 Justin Looman";
+
+    body.style.fontFamily = "sans-serif";
+    body.style.color = "#FF2400";
+    p[0].style.color = "green";
+    p[0].style.fontWeight = "bold";
+    p[0].style.fontSize = "2rem";
+    p[0].style.textTransform = "uppercase";
+    p[0].style.textShadow = "3px 2px #A44";
+	</script>
+</body>
+</html>
