@@ -53,7 +53,8 @@ function updateValue(e){
     }
 }
 
-let colButton = document.querySelectorAll("#colorButton");
+let colButton = document.querySelector("#colorButton");
+let legend = document.querySelector("legend");
 
 colButton.addEventListener('click', colSelected);
 
@@ -61,6 +62,7 @@ function colSelected(e){
     for(const element of colorSelect){
         if(element.checked){
             log.textContent = "Your FINAL CHOICE is \"" + element.value + "\"!";
+			legend.style.color = element.value;
         }
     }
 }
