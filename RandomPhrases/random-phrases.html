@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Web Apps-4-HW</title>
+	<style>
+		body{
+            border:1px solid gray;
+            background-color: cadetblue;
+            height: 100vh;
+            font-family: 'Zen Kurenaido', sans-serif;
+        }
+        #select{         
+            width: 20vw;
+            height: 10vh;
+            position: relative;
+            left: 40vw;
+            top: 40vh;
+
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 20px;
+            font-family: 'Zen Kurenaido', sans-serif;
+        }
+        #select:hover{
+            background-color: red;
+        }
+        #select:active{
+            background-color: black;
+        }
+        #info{
+            display: flex;
+            position: relative;
+            width: 50vw;
+            left: 25vw;
+            height: auto;  
+            font-size: 30px;               
+        }
+        img{
+            display: flex;
+            position: relative;
+            left: 30vw;
+            top: 5vh;
+        }
+	</style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Kurenaido&display=swap" rel="stylesheet">
+</head>
+<body>
+    <img src="thumbsUp.jpg" alt="Thumbs Up">
+    <div id="buttonLine">
+        <p><button id="select" type="button">Press Me</button></p>
+        <p id="info"></p>
+    </div>
+
+
+    <script>
+        "using strict";
+
+        let lines = [
+            "If I had ten thumbs, I'd put them all up for you.",
+            "When you think you bombed a test but actually did good.", 
+            "Me when I see my grades so far this semester.", 
+            "Watching your team actually win and perform how you know they can.", 
+            "When the code finally works."];
+
+        let lineBut = document.querySelector("#select");
+        let log = document.querySelector("#info");
+
+        lineBut.addEventListener('click', displayQuote);
+
+        function displayQuote(e){
+            let rand = getRandomInt(0,5);
+            log.textContent = lines[rand];
+        }
+
+        function getRandomInt(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
+        }
+    </script>
+</body>
+</html>

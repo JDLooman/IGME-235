@@ -1,48 +1,92 @@
+* {
+    box-sizing: border-box;
+}
+body{
+    margin: 0px;
+}
 #wrapper{
     display: grid;
     grid-template-areas:
     "header"
     "main"
+    "skills"
     "games"
-    "footer";
-    grid-template-rows: 100px 600px 400px 100px;
-    background-color: #d38d3c;
+    "contacts";
+    grid-template-rows: 100px 500px .5fr 1fr 250px;
+    background-color: azure;
 }
-.header{
+@media screen and (max-width:1200px){
+    #header h1{
+        display: none;
+    }
+    #about img{
+        display: none;
+    }
+}
+#header{
     grid-area: header;
-    border: 1px solid black;
-    display: flex;
-    width: auto;
-    padding: 0 3rem;    
+    display: flex;  
+    background-color: aqua;  
+    color: black;
 }
-.menu{
-    grid-area: header;
-    border: 1px solid black;
-    width: 50px;
-    padding: 0 2rem;
+#header h1{
+    padding-left: .5em;
+    margin-top: 30px;
+    width: 10em;
+    text-align: left;
+}
+ul.menu{
     display: flex;
-    flex-wrap: wrap;
-    justify-self: right;
+    padding: 1em;
+    gap: 5px;
     justify-content: center;
-    background-color: aqua;
+    width: 100%;
+    margin: 0 auto;
+    font-size: 20px;
 }
-.picture{
-    grid-area: main;
-    border: 1px solid black;
-    width: 15%;
-    padding: 0 2rem;
-    height: 30%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-self: left;
+.menu li{
+    display: inline-block;
+    align-self: center;
     justify-content: center;
-    background-color: aqua;
+    width: 20%;
 }
-.main{
+.menu a{
+    display: block;
+    padding: 15px;
+    text-align: center;
+
+}
+#about{
     grid-area: main;
     display: flex;
     flex-wrap: wrap;
-    margin-left: 20%;
+    justify-content: center;
+}
+#about img{
+    margin: 2em;
+    align-self: center;
+    flex-wrap: row wrap;
+}
+#about article{
+    margin: 2em;
+    height: 20em;
+    flex: 0 1 30em;
+    flex-flow: row wrap;
+    align-self: center;
+    font-size: 25px;
+}
+#about h2{
+    padding-left: .2em;
+    border-bottom: 3px solid aqua;
+    border-left: 3px solid aqua;
+}
+#skills{
+    grid-area: skills;
+    font-size: 30px;
+}
+#skills h2{
+    padding-left: .2em;
+    border-left: 6px solid aqua;
 }
 #games{
     grid-area: games;
@@ -52,14 +96,27 @@
 }
 #games article{
     grid-area: games;
-    border: 1px solid black;
-    width: 30%;
-    flex: 0 0 30%;
+    flex: 1 1 500px;
+    max-width: 600px;
+    min-height: 500px;
     flex-flow: row wrap;
     margin: 1rem;
+    display: flex;
+    justify-content: center;
     background-color: bisque;
 }
-.footer{
-    grid-area: footer;
-    border: 1px solid black;
+#games img{
+    margin-top: .2em;
+    flex-flow: row wrap;
+}
+#games .description{
+    flex-flow: row wrap;
+    flex: 0 0 100%;
+    margin-left: 1em;
+    margin-right: 1em;
+}
+#contacts{
+    grid-area: contacts;
+    font-size: 25px;
+    background-color: azure;
 }
