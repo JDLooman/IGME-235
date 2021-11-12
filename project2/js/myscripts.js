@@ -1,7 +1,13 @@
 window.onload = (e) => {
     document.querySelector("#search").onclick = searchButtonClicked;
     document.querySelector("#random").onclick = randomSearch;
+    document.querySelector("#type").onclick = pokeType;
+    document.querySelector("#weakness").onclick = pokeWeakness;
+    document.querySelector("#strength").onclick = pokeStrength;
+    document.querySelector("#picture").onclick = pokePicture;
 };
+
+// add an on click for the about function to make things happen when you click it
 
 let diplayterm = "";
 
@@ -33,13 +39,29 @@ function randomSearch(){
 
     let url = GIPHY_URL;
 
-    let term = getRandomInt(200);
+    let term = getRandomInt(893);
 
     url += term;
 
     console.log(url);
 
     getData(url);
+}
+
+function pokeType(){
+    document.querySelector("#data").innerHTML = "this is for the type";
+}
+
+function pokeWeakness(){
+    document.querySelector("#data").innerHTML = "this is for the weakness";
+}
+
+function pokeStrength(){
+    document.querySelector("#data").innerHTML = "this is for the strength";
+}   
+
+function pokePicture(){
+    document.querySelector("#data").innerHTML = "this is for the picture";
 }
 
 function getData(url){
@@ -54,13 +76,16 @@ function getData(url){
 }
 
 function dataLoaded(e){
-    let xhr = e.target;
+    let xhr = e.target;    
 
     console.log(xhr.responseText);
 
     let result = JSON.parse(xhr.responseText);
 
-    document.querySelector("#content").innerHTML = "Showing result for '" + result.name.toUpperCase() + "' " + result.type;
+    let typeArray = result.types;
+    let newArray = typeArray[1];
+
+    document.querySelector("#content").innerHTML = "Showing result for '" + result.name.toUpperCase() + "'";
 }
 
 function dataError(e){
