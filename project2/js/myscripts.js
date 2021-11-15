@@ -7,8 +7,6 @@ window.onload = (e) => {
     document.querySelector("#picture").onclick = pokePicture;
 };
 
-// add an on click for the about function to make things happen when you click it
-
 let diplayterm = "";
 
 function searchButtonClicked(){
