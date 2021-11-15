@@ -8,32 +8,37 @@
   
 </head>
 <body>
-    <div class="searchBar">
-        Search Pokemon:
-        <input id="searchterm" type="text" size="20" maxlength="20" autofocus value="Pikachu">
-
-        <button type="button" id="search">Search</button>
-    </div>
-
-    <button type="button" id="random">Random Pokemon</button>
-
-    <h2>Result</h2>
-    <div id="content">
-        <p>No pokemon yet</p>
-    </div>
-
-    <!-- https://www.w3schools.com/howto/howto_js_dropdown.asp -->
-    <div class="dropdown">
-        <button onclick="myFunction()" class="dropbtn">About</button>
-        <div id="myDropdown" class="dropdown-content">
-            <a id="type">Type</a>
-            <a id="picture">Picture</a>
-            <a id="strength">Strength</a>
-            <a id="weakness">Weakness</a>
+    <div id="wrapper">
+        <div id="header">
+            <img id="pokeImg" src="images/logo.png" alt="Pokemon API">            
         </div>
-    </div>
-    <!-- https://people.rit.edu/dek6613/235/pokemon-generator/ --- For when i need a reference -->
-    <div id="data"> something</div>
+
+        <div class="searchBar">
+            Search Pokemon:
+            <input id="searchterm" type="text" size="20" maxlength="20" autofocus value="Pikachu">
     
+            <button type="button" id="search">Search</button>
+        </div>
+    
+        <button type="button" id="random">Random Pokemon</button>
+    
+        <h2>Result</h2>
+        <div id="content">
+            <p>No pokemon yet</p>
+        </div>
+    
+        <!-- https://www.w3schools.com/howto/howto_js_dropdown.asp -->
+        <div class="dropdown">
+            <button onclick="myFunction()" class="dropbtn">About</button>
+            <div id="myDropdown" class="dropdown-content">
+                <a id="type">Type</a>
+                <a id="picture">Picture</a>
+                <a id="strength">Strength</a>
+                <a id="weakness">Weakness</a>
+            </div>
+        </div>
+        <!-- https://people.rit.edu/dek6613/235/pokemon-generator/ --- For when i need a reference -->
+        <div id="data"> something</div>
+    </div>    
 </body>
 </html>
