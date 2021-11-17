@@ -9,6 +9,16 @@ window.onload = (e) => {
 
 let diplayterm = "";
 
+let picture;
+let type;
+let weakness;
+let strength;
+
+let picActive = false;
+let weakActive = false;
+let strenActive = false;
+let typeActive = false;
+
 function searchButtonClicked(){
     const GIPHY_URL = "https://pokeapi.co/api/v2/pokemon-form/";
 
@@ -37,7 +47,7 @@ function randomSearch(){
 
     let url = GIPHY_URL;
 
-    let term = getRandomInt(893);
+    let term = getRandomInt(894);
 
     url += term;
 
@@ -47,19 +57,47 @@ function randomSearch(){
 }
 
 function pokeType(){
-    document.querySelector("#data").innerHTML = "this is for the type";
+    document.querySelector("#data").innerHTML = type;
+
+
+
+    picActive = false;
+    weakActive = false;
+    strenActive = false;
+    typeActive = true;
 }
 
 function pokeWeakness(){
     document.querySelector("#data").innerHTML = "this is for the weakness";
+
+
+
+    picActive = false;
+    weakActive = true;
+    strenActive = false;
+    typeActive = false;
 }
 
 function pokeStrength(){
     document.querySelector("#data").innerHTML = "this is for the strength";
+
+
+
+    picActive = false;
+    weakActive = false;
+    strenActive = true;
+    typeActive = false;
 }   
 
 function pokePicture(){
-    document.querySelector("#data").innerHTML = "this is for the picture";
+    document.querySelector("#data").innerHTML = `<img src = ${picture} width=200px height=200px>`;
+
+
+
+    picActive = true;
+    weakActive = false;
+    strenActive = false;
+    typeActive = false;
 }
 
 function getData(url){
@@ -80,10 +118,23 @@ function dataLoaded(e){
 
     let result = JSON.parse(xhr.responseText);
 
-    let typeArray = result.types;
-    let newArray = typeArray[1];
-
     document.querySelector("#content").innerHTML = "Showing result for '" + result.name.toUpperCase() + "'";
+
+    picture = result.sprites.front_default;
+    type = result.types[0].type.name;
+
+    if(picActive){
+        pokePicture();
+    }
+    if(weakActive){
+        pokeWeakness();
+    }
+    if(strenActive){
+        pokeStrength();
+    }
+    if(typeActive){
+        pokeType();
+    }
 }
 
 function dataError(e){
