@@ -2,43 +2,49 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
  	<title>Pokemon API</title>
-	<link rel="stylesheet" type="text/css" href="styles/mystyle.css">
+	<link rel="stylesheet" href="styles/dsstyle.css">
 	<script src="js/myscripts.js"></script>
   
 </head>
 <body>
-    <div id="wrapper">
-        <div id="header">
-            <img id="pokeImg" src="images/logo.png" alt="Pokemon API">            
-        </div>
+    <div id="wrapper">        
+        <div id="leftSide"></div>
+        <div id="rightSide"></div>
 
-        <div class="searchBar">
-            Search Pokemon:
-            <input id="searchterm" type="text" size="20" maxlength="20" autofocus value="Pikachu">
-    
-            <button type="button" id="search">Search</button>
-        </div>
-    
-        <button type="button" id="random">Random Pokemon</button>
-    
-        <h2>Result</h2>
-        <div id="content">
-            <p>No pokemon yet</p>
-        </div>
-    
-        <!-- https://www.w3schools.com/howto/howto_js_dropdown.asp -->
-        <div class="dropdown">
-            <button onclick="myFunction()" class="dropbtn">About</button>
-            <div id="myDropdown" class="dropdown-content">
-                <a id="type">Type</a>
-                <a id="picture">Picture</a>
-                <a id="strength">Strength</a>
-                <a id="weakness">Weakness</a>
+        <div id="topScreen">
+            <!-- The screen to show the results of the search and button presses -->
+            <div id="showResults">
+                <div class="content">Showing results for ...</div>
+                <div class="data"></div>
             </div>
         </div>
-        <!-- https://people.rit.edu/dek6613/235/pokemon-generator/ --- For when i need a reference -->
-        <div id="data"> something</div>
+        <div id="midScreen"></div>
+        <div id="botScreen">
+            <!-- Buttons for the picture, strength, type and weakness -->
+            <div id="buttons">
+                <button class="button buttonTop">P</button>
+                <button class="button buttonLeft">W</button>
+                <button class="button buttonBot">T</button>                
+                <button class="button buttonRight">S</button>
+            </div>
+
+            <!-- Buttons for the D pad switching front and back pictures -->
+            <div id="pads">                
+                <button class="pad padLeft">Back</button>
+                <div class="rectangle"></div>
+                <button class="pad padRight">Front</button>                
+            </div>
+            
+            <!-- The middle "touch screeen" portion of the DS -->
+            <div id="centerScreen">
+                <input class="search searchBar" type="text" size="20" maxlength="20">
+                <button class="search searchManu">Search</button>
+                <button class="search searchRand">Random Search</button>
+            </div>
+        </div>
     </div>   
 </body>
 </html>

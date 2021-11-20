@@ -1,0 +1,191 @@
+#wrapper{
+    display: grid;
+    grid-template-areas:
+    "leftSide  topScreen  rightSide"
+    "leftSide  midScreen  rightSide"
+    "leftSide  botScreen  rightSide";
+    grid-template-columns: .75fr 2fr .75fr;
+    grid-template-rows: 2fr .2fr 2fr;
+    background-color: grey;
+    color: white;
+}
+#leftSide{
+    grid-area: leftSide;
+    display: flex;
+    width: auto;
+    background-image: url("../images/sea3.jpg");
+}
+#rightSide{
+    grid-area: rightSide;
+    display: flex;
+    width: auto;
+    background-image: url("../images/grass.jpg");
+}
+#topScreen{
+    grid-area: topScreen;
+    display: flex;
+    width: auto;
+    height: 450px;
+    border: 3px solid black;
+}
+#midScreen{
+    grid-area: midScreen;
+    background-color: black;
+    display: flex;
+    width: auto;
+}
+#botScreen{
+    grid-area: botScreen;
+    display: flex;
+    width: auto;
+    border: 3px solid black;
+}
+
+/* Buttons for switching the pic, strength, type and weakness */
+#buttons{
+    display: flex;
+    position: relative;
+    left: 78%;
+    top: 30%;
+    height: 200px;
+}
+.button{
+    background-color: #04AA6D; /* Green */
+    display: flex;
+    position: relative;
+    border: none;
+    color: white;
+    padding: 20px;
+    height: 5%;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 40%;
+    flex-wrap: wrap;
+}
+.buttonTop{
+    left: 50%;
+}
+.buttonRight{
+    top: 20%;
+    right: 5%;
+}
+.buttonBot{
+    top: 40%;
+}
+.buttonLeft{
+    top: 20%;
+    left: 5%;
+}
+
+/* Buttons for the D pad switching front and back pictures */
+#pads{
+    display: flex;
+    position: relative;
+    right: 20%;
+    top: 40%;
+    height: 200px;
+}
+.pad{
+    background-color: rgb(61, 61, 243);
+    display: flex;
+    position: relative;
+    color: white;
+    height: 30px;
+    width: 50px;
+    border: none;
+    padding: 5px;
+    justify-content: center;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 10%;
+}
+.rectangle{
+    display: flex;
+    position: relative;
+    background-color: rgb(61, 61, 243);
+    width: 30px;
+    height: 100px;
+    bottom: 17.5%;
+    border-radius: 10%;
+}
+.padRight{
+    right: 3%;
+}
+.padLeft{
+    left: 3%;
+}
+
+/* The middle "touch screeen" portion of the DS */
+#centerScreen{
+    display: flex;
+    position: relative;
+    background-color: white;
+    background-image: url("../images/desert.png");
+    background-position: -600px 0;
+    color: black;
+    border: 2px solid rgb(100, 97, 97);
+    width: 70%;
+    height: 90%;
+    right: 17.5%;
+    top: 5%;
+    border-radius: 2%;
+}
+.search{
+    display: flex;
+    position: relative;    
+    justify-content: center;
+    padding: 5px;
+    height: 30px;
+    border-radius: 20%;
+    cursor: pointer;
+}
+.searchBar{
+    border-radius: 10%;
+    top: 10%;
+    left: 5%;
+    background-color: peru;
+}
+.searchManu{
+    top: 11.5%;
+    left: 6%;
+    background-color: peru;
+}
+.searchRand{
+    top: 80%;
+    left: 0%;
+    width: 200px;
+    height: 50px;
+    font-size: 25px;
+    background-color: peru;
+}
+
+/* The screen to show the results of the search and button presses */
+#showResults{
+    display: flex;
+    position: relative;
+    margin: 1rem;
+    width: 100%;
+    background-color:rosybrown;
+    border-radius: 2%;
+}
+.content{
+    display: flex;
+    position: relative;
+    font-size: 25px;
+    margin: 5px;
+    height: 100px;
+    width: 100%;
+}
+.data{
+    display: flex;
+    position: relative;
+    height: 60%;
+    width: 100%;
+    top: 30%;
+    right: 30%;
+    font-size: 20px;
+    font-weight: bold;
+    justify-content: center;
+}
