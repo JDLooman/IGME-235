@@ -1,0 +1,26 @@
+body{
+    background-color: crimson;
+}
+#wrapper{
+    
+}
+p{
+    display: flex;
+    height: fit-content;
+    background-color: navajowhite;
+    font-size: 24px;
+    justify-content: center;
+    padding: 1rem;
+    margin: 0px;
+}
+h3{
+    display: flex;
+    height: fit-content;
+    background-color: navajowhite;
+    font-size: 24px;
+    padding: 1rem;
+    margin: 0px;
+}
+hr{
+    border: 1px solid black;
+}
