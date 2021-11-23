@@ -1,9 +1,6 @@
 body{
     background-color: crimson;
 }
-#wrapper{
-    
-}
 p{
     display: flex;
     height: fit-content;
@@ -23,4 +20,7 @@ h3{
 }
 hr{
     border: 1px solid black;
+}
+img{
+    margin: 2rem;
 }
