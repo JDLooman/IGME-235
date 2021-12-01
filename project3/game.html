@@ -48,7 +48,8 @@ const worldTile = Object.freeze({
 let effectAudio = undefined;
 
 // level data is over in gamedata.js
-let currentLevelNumber = 1;
+let worldX = 0;
+let worldY = 0;
 let currentGameWorld = undefined;   // a 2D array - the grid:  walls, floors, water, etc...
 let currentGameObjects = undefined; // a 1D array - stuff that's on top of the grid and can move: monsters, treasure, keys, etc...
 
@@ -65,17 +66,30 @@ const player = Object.seal({
 
 
 // II. INIT code
-window.onload = ()=>{	
-    makeLevel();	
+window.onload = ()=>{		
+    currentGameWorld = gameworld["world" + worldX + worldY];
+	let numCols = currentGameWorld[0].length;
+	let numRows = currentGameWorld.length;
+	player.x = 1;
+	player.y = 1;
+    createGridElements(numRows,numCols);
+	drawGrid(currentGameWorld);
+	loadLevel(worldX, worldY);
+	drawGameObjects(currentGameObjects);
+	effectAudio = document.querySelector("#effectAudio");
+	effectAudio.volume = 0.2;;
+	setupEvents();	
 }
 
-function makeLevel(){
-    currentGameWorld = gameworld["world" + currentLevelNumber];
+function nextLevel(){
+	document.querySelector("#gridContainer").innerHTML = "";
+
+	currentGameWorld = gameworld["world" + worldX + worldY];
 	let numCols = currentGameWorld[0].length;
 	let numRows = currentGameWorld.length;
     createGridElements(numRows,numCols);
 	drawGrid(currentGameWorld);
-	loadLevel(currentLevelNumber);
+	loadLevel(worldX, worldY);
 	drawGameObjects(currentGameObjects);
 	effectAudio = document.querySelector("#effectAudio");
 	effectAudio.volume = 0.2;;
@@ -100,28 +114,14 @@ function createGridElements(numRows,numCols){
 	}
 }
 
-function deleteGridElements(){
-    let cellLength = cells.length;
-    let gameLength = currentGameObjects.length;
-    for(let i=0; i<cellLength - 1; i++){
-        cells.pop();
-    }
-    for(let i=0; i<gameLength - 1; i++){
-        currentGameObjects.pop();
-    }
-    currentLevelNumber += 1;
-    makeLevel();
-}
-
 // the elements on the screen that can move and change - also part of the "view"
-function loadLevel(levelNum = 1){
+function loadLevel(levelX, levelY){
 	currentGameObjects = []; // clear out the old array
 	const node =  document.createElement("span");
 	node.className = "gameObject";
 
 	// now initialize our player
-	player.x = 1;
-	player.y = 1;
+	
 	player.element = node.cloneNode(true);
 	player.element.classList.add("player");
 	container.appendChild(player.element);
@@ -129,7 +129,7 @@ function loadLevel(levelNum = 1){
 	
 	/* let's instantiate our game objects */
 	// pull the current level data
-	const levelObjects = allGameObjects["level" + levelNum];
+	const levelObjects = allGameObjects["level" + levelX + levelY];
 	
 	// loop through this level's objects ... 
 	for (let obj of levelObjects){
@@ -221,11 +221,33 @@ function movePlayer(e){
 	
 	function checkIsLegalMove(nextX,nextY){
 		let nextTile = currentGameWorld[nextY][nextX];
-		if (nextTile == worldTile.GROUND){
-			deleteGridElements();
-		}else if(nextTile != worldTile.WALL && nextTile != worldTile.WATER){
-            return true;
-        }else{
+		if (nextTile != worldTile.WALL && nextTile != worldTile.WATER){
+			if(nextY == 19){
+				worldY += 1;
+				player.y = 0;
+				nextLevel();
+				setTimeout(function(){}, 5000);		
+			}else if(nextX == 0){
+				worldX -= 1;
+				player.x = 29;
+				nextLevel();
+				setTimeout(function(){}, 5000);	
+			}else if(nextY == 0){
+				worldY -= 1;
+				player.y = 19;
+				nextLevel();
+				setTimeout(function(){}, 5000);	
+			}		
+			else if(nextX == 29){
+				worldX += 1;
+				player.x = 0;
+				nextLevel();
+				setTimeout(function(){}, 5000);	
+			}
+			//if we are not moving levels we cannot more
+			setTimeout(function(){}, 5000);	
+			return true;
+		}else{
 			effectAudio.play();
 			return false;
 		}
@@ -250,6 +272,7 @@ function setupEvents(){
 		}
 		movePlayer(e);
 		drawGameObjects(currentGameObjects);
+		setTimeout(function(){}, 5000);	
 	};
 }
 
