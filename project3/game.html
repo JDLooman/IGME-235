@@ -25,6 +25,11 @@ const cellSpacing = 0;
 const container = document.querySelector("#gridContainer");
 const cells = []; // the HTML elements - our "view"
 
+let isMove = true;
+
+let randX;
+let randY;
+
 // faking an enumeration here
 const keyboard = Object.freeze({
 	SHIFT: 		16,
@@ -193,29 +198,31 @@ function drawGameObjects(array){
 function movePlayer(e){
 	let nextX;
 	let nextY;
-	switch(e.keyCode){
+
+	switch(e.keyCode){			
 		case keyboard.RIGHT:
-		nextX = player.x + 1;
-		nextY = player.y;
-		if(checkIsLegalMove(nextX,nextY)) player.moveRight();
+			isMove = false;
+			nextX = player.x + 1;
+			nextY = player.y;
+			if(checkIsLegalMove(nextX,nextY)) player.moveRight();			
 		break;
-		
+				
 		case keyboard.DOWN:
-		nextX = player.x;
-		nextY = player.y + 1;
-		if(checkIsLegalMove(nextX,nextY)) player.moveDown();
+			nextX = player.x;
+			nextY = player.y + 1;
+			if(checkIsLegalMove(nextX,nextY)) player.moveDown();
 		break;
-		
+				
 		case keyboard.LEFT:
-		nextX = player.x - 1;
-		nextY = player.y;
-		if(checkIsLegalMove(nextX,nextY)) player.moveLeft();
+			nextX = player.x - 1;
+			nextY = player.y;
+			if(checkIsLegalMove(nextX,nextY)) player.moveLeft();
 		break;
-		
+				
 		case keyboard.UP:
-		nextX = player.x;
-		nextY = player.y - 1;
-		if(checkIsLegalMove(nextX,nextY)) player.moveUp();
+			nextX = player.x;
+			nextY = player.y - 1;
+			if(checkIsLegalMove(nextX,nextY)) player.moveUp();
 		break;
 	}
 	
@@ -225,30 +232,116 @@ function movePlayer(e){
 			if(nextY == 19){
 				worldY += 1;
 				player.y = 0;
-				nextLevel();
-				setTimeout(function(){}, 5000);		
+				nextLevel();						
 			}else if(nextX == 0){
 				worldX -= 1;
 				player.x = 29;
 				nextLevel();
-				setTimeout(function(){}, 5000);	
 			}else if(nextY == 0){
 				worldY -= 1;
 				player.y = 19;
-				nextLevel();
-				setTimeout(function(){}, 5000);	
+				nextLevel();	
 			}		
 			else if(nextX == 29){
 				worldX += 1;
 				player.x = 0;
 				nextLevel();
-				setTimeout(function(){}, 5000);	
 			}
-			//if we are not moving levels we cannot more
-			setTimeout(function(){}, 5000);	
+			//if we are not moving levels we just move normally
+			moveEnemy();
 			return true;
 		}else{
-			effectAudio.play();
+			//effectAudio.play();
+			moveEnemy();
+			return false;
+		}
+	}
+		
+}
+
+function moveEnemy(){
+	//get 2 random numbers for our scale
+	randX = Math.random();
+	randY = Math.random();
+
+	//use the X to make a move on the X axis
+	if(randX < .5){
+		if(checkIsLegalMove(currentGameObjects[0].x - 1, currentGameObjects[0].y)){
+			currentGameObjects[0].x -= 1;
+		}
+		else{
+			currentGameObjects[0].x += 1
+		}		
+	}
+	else{
+		if(checkIsLegalMove(currentGameObjects[0].x + 1, currentGameObjects[0].y)){
+			currentGameObjects[0].x += 1;
+		}
+		else{
+			currentGameObjects[0].x -= 1;
+		}
+	}
+
+	//use the Y to make a move on the Y axis
+	if(randY < .5){
+		if(checkIsLegalMove(currentGameObjects[0].x, currentGameObjects[0].y - 1)){
+			currentGameObjects[0].y -= 1;
+		}
+		else{
+			currentGameObjects[0].y += 1;
+		}
+	}
+	else{
+		if(checkIsLegalMove(currentGameObjects[0].x, currentGameObjects[0].y + 1)){
+			currentGameObjects[0].y += 1;
+		}else{
+			currentGameObjects[0].y -= 1;
+		}
+	}
+	
+	//repeat the same process for our second enemy
+	//get 2 random numbers for our scale
+	randX = Math.random();
+	randY = Math.random();
+
+	//use the X to make a move on the X axis
+	if(randX < .5){
+		if(checkIsLegalMove(currentGameObjects[1].x - 1, currentGameObjects[1].y)){
+			currentGameObjects[1].x -= 1;
+		}else{
+			currentGameObjects[1].x += 1;
+		}		
+	}
+	else{
+		if(checkIsLegalMove(currentGameObjects[1].x + 1, currentGameObjects[1].y)){
+			currentGameObjects[1].x += 1;
+		}else{
+			currentGameObjects[1].x -= 1;
+		}
+	}
+
+	//use the Y to make a move on the Y axis
+	if(randY < .5){
+		if(checkIsLegalMove(currentGameObjects[1].x, currentGameObjects[1].y - 1)){
+			currentGameObjects[1].y -= 1;
+		}else{
+			currentGameObjects[1].y += 1;
+		}
+	}
+	else{
+		if(checkIsLegalMove(currentGameObjects[1].x, currentGameObjects[1].y + 1)){
+			currentGameObjects[1].y += 1;
+		}else{
+			currentGameObjects[1].y -= 1;
+		}
+	}
+
+	function checkIsLegalMove(nextX,nextY){
+		let nextTile = currentGameWorld[nextY][nextX];
+		if (nextTile != worldTile.WALL && nextTile != worldTile.WATER && nextTile != worldTile.GROUND){			
+			//if we are not moving levels we just move normally
+			return true;
+		}else{
 			return false;
 		}
 	}
