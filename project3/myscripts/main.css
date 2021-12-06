@@ -107,6 +107,7 @@ span.monster1{
 	top: -100px;
 	z-index: 500; /* layered between other game objects and player */
 	background-position: -96px -32px;
+	transition-duration: .25s;
 }
 
 span.monster2{ 
@@ -115,6 +116,7 @@ span.monster2{
 	top: -100px;
 	z-index: 500; /* layered between other game objects and player */
 	background-position: -192px -128px;
+	transition-duration: .25s;
 }
 
 span.monster3{ 
@@ -123,6 +125,7 @@ span.monster3{
 	top: -100px;
 	z-index: 500; /* layered between other game objects and player */
 	background-position: -192px -224px;
+	transition-duration: .25s;
 }
 
 /* player style */
