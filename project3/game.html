@@ -12,8 +12,10 @@
 </head>
 <body>
 <div id="gridContainer"></div>
-<h1>Adventure Game!</h1>
-<h2>Prisoners Saved: 0</h2>
+<h1></h1>
+<p></p>
+<button class="start">Play Game</button>
+<h3></h3>
 <!-- https://freesound.org/people/Dirtjm/sounds/262279/ -->
 <audio id="effectAudio" src="sounds/grunt.wav" controls></audio>
 
@@ -25,10 +27,14 @@ const cellWidth = 32;
 const cellSpacing = 0;
 const container = document.querySelector("#gridContainer");
 const cells = []; // the HTML elements - our "view"
+let d = new Date();
+d.setMinutes(d.getMinutes() + 3);
 
 let randX;
 let randY;
-let count = 0;
+let started = false;
+let min;
+let sec;
 
 // faking an enumeration here
 const keyboard = Object.freeze({
@@ -72,7 +78,25 @@ const player = Object.seal({
 
 // II. INIT code
 window.onload = ()=>{		
-    currentGameWorld = gameworld["world" + worldX + worldY];
+	//setting the text to null in our starty menu
+	document.querySelector("h1").innerHTML = "";
+	document.querySelector("p").innerHTML = "";
+	document.querySelector("h3").innerHTML = "You are trapped in a prison. Find the key before time runs out. But be ware, there are gaurds all around.";
+
+	document.querySelector(".start").onclick = startGame;
+}
+
+function startGame(){
+	//making the text for the game
+	document.querySelector("h1").innerHTML = "Find the Key!";
+	document.querySelector("p").innerHTML = "Time Remaining: ";
+	document.querySelector("h3").innerHTML = "";
+	started = true;
+	worldX = 0;
+	worldY = 0;
+
+
+	currentGameWorld = gameworld["world" + worldX + worldY];
 	let numCols = currentGameWorld[0].length;
 	let numRows = currentGameWorld.length;
 	player.x = 1;
@@ -83,7 +107,7 @@ window.onload = ()=>{
 	drawGameObjects(currentGameObjects);
 	effectAudio = document.querySelector("#effectAudio");
 	effectAudio.volume = 0.2;;
-	setupEvents();	
+	setupEvents();
 }
 
 function nextLevel(){
@@ -262,9 +286,6 @@ function movePlayer(e){
 	if(checkSpaceEnemy()){
 		death();
 	}
-	if(checkSpacePrisoner()){
-		prisonerCount();
-	}
 }
 
 function moveEnemy(){	
@@ -322,14 +343,14 @@ function moveEnemy(){
 
 function checkSpaceEnemy(){
 	for(let i = 0; i < currentGameObjects.length; i++){
-		if(player.x == currentGameObjects[i].x && player.y == currentGameObjects[i].y){
-			return true;
-		}
-		else{
-			return false;
-		}
-	}
-	
+		if(currentGameObjects[i].type == "monster"){
+			if(player.x == currentGameObjects[i].x && player.y == currentGameObjects[i].y){
+				return true;
+			}
+		}		
+	}	
+
+	return false;
 }
 
 function checkSpaceKey(){
@@ -344,42 +365,19 @@ function checkSpaceKey(){
 	}	
 }
 
-function checkSpacePrisoner(){
-	for(let i = 0; i < currentGameObjects.length; i++){
-		if(currentGameObjects[i].type == "prisoner"){
-			if(player.x == currentGameObjects[i].x && player.y == currentGameObjects[i].y){
-				return true;
-			}
-			else{
-				return false;
-			}
-		}
-	}
-}
-
 function death(){
+	started = false;
 	document.querySelector("#gridContainer").innerHTML = "";
+	document.querySelector("p").innerHTML = "";
 	document.querySelector("h1").innerHTML = "Game Over!";
 }
 
 function win(){
+	started = false;
 	document.querySelector("#gridContainer").innerHTML = "";
+	document.querySelector("p").innerHTML = "You had " + min + " minutes & " + sec + " seconds left!";
 	document.querySelector("h1").innerHTML = "You Win!";
 }
-
-function prisonerCount(){	
-	count++;
-	document.querySelector("h2").innerHTML = "Prisoner Saved: " + count;
-	// for(let i = 0; i < currentGameObjects.length; i++){
-	// 	if(currentGameObjects[i].type == "prisoner"){
-	// 		if(player.x == currentGameObjects[i].x && player.y == currentGameObjects[i].y){
-	// 			//make it so that the obejct gets removed from the scene after being hit.
-	// 			currentGameObjects[i].removeChild();
-	// 		}
-	// 	}
-	// }
-}
-
 
 // IV. EVENTS
 function setupEvents(){
@@ -412,6 +410,39 @@ function gridClicked(e){
 	// selectedCell.classList.add('cellSelected');
 	console.log(`${col},${row}`);
 }
+
+// Update the count down every 1 second
+var x = setInterval(function() {
+	if(started){
+		// Get today's date and time
+		var now = new Date().getTime(); 
+		
+		// Find the distance between now and the count down date
+		var distance = d - now;
+		
+		// Time calculations for days, hours, minutes and seconds
+		var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+		var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+		
+		// Output the result in an element with id="demo"
+		document.querySelector("p").innerHTML = "Time Remaining: " + minutes + "m " + seconds + "s ";
+
+		min = minutes;
+		sec = seconds;
+		
+		// If the count down is over, write some text 
+		if (distance < 0) {
+			clearInterval(x);
+			document.querySelector("p").innerHTML = "";
+			death();
+		}
+	}
+	else{
+		now = new Date().getTime();
+		d = new Date();
+		d.setMinutes(d.getMinutes() + 3);
+	}	
+}, 1000);
 
 </script>
 

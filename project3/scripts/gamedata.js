@@ -220,26 +220,21 @@ const allGameObjects = {
 		{x:10, y:18, type:"monster", 	className: cssClass.MONSTER1},
 		{x:20, y:12, type:"monster",	className: cssClass.MONSTER1},
 		{x:2, y:7, type:"monster",	className: cssClass.MONSTER1},
-		{x:12, y:6, type:"prisoner", className: cssClass.PRISONER1}
 	],
 	level10:[
 		{x:15, y:8, type:"monster", 	className: cssClass.MONSTER1},
 		{x:2, y:10, type:"monster",		className: cssClass.MONSTER1},
 		{x:15, y:16, type:"monster",	className: cssClass.MONSTER1},
-		{x:24, y:15, type:"prisoner", className: cssClass.PRISONER1}
 	],
 	level01:[
 		{x:15, y:8, type:"monster", 	className: cssClass.MONSTER1},
 		{x:7, y:2, type:"monster",	className: cssClass.MONSTER1},
 		{x:18, y:15, type:"monster",	className: cssClass.MONSTER1},
-		{x:6, y:11, type:"prisoner", className: cssClass.PRISONER1}
 	],
 	level20:[
 		{x:7, y:15, type:"monster",	className: cssClass.MONSTER1},
 		{x:12, y:7, type:"monster",	className: cssClass.MONSTER1},
 		{x:11, y:6,  type:"key",		className: cssClass.KEY1},
-		{x:2, y:2, type:"prisoner", className: cssClass.PRISONER1},
-		{x:18, y:7, type:"prisoner", className: cssClass.PRISONER1}
 	],
 	level02:[
 		{x:15, y:8, type:"monster", 	className: cssClass.MONSTER1},
@@ -247,8 +242,6 @@ const allGameObjects = {
 		{x:7, y:2, type:"monster",	className: cssClass.MONSTER1},
 		{x:7, y:15, type:"monster",	className: cssClass.MONSTER1},
 		{x:18, y:15, type:"monster",	className: cssClass.MONSTER1},
-		{x:19, y:18, type:"prisoner", className: cssClass.PRISONER1},
-		{x:12, y:4, type:"prisoner", className: cssClass.PRISONER1},
 		{x:9, y:15,  type:"key",		className: cssClass.KEY1},		
 	],
 	level12:[
@@ -264,7 +257,6 @@ const allGameObjects = {
 		{x:11, y:8, type:"monster",	className: cssClass.MONSTER1},
 		{x:22, y:11, type:"monster",	className: cssClass.MONSTER1},
 		{x:27, y:15, type:"monster",	className: cssClass.MONSTER1},
-		{x:16, y:8, type:"prisoner", className: cssClass.PRISONER1}
 	],
 	level11:[
 		{x:7, y:13, type:"monster",	className: cssClass.MONSTER1},
