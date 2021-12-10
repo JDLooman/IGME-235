@@ -13,6 +13,7 @@
 <body>
 <div id="gridContainer"></div>
 <h1>Adventure Game!</h1>
+<h2>Prisoners Saved: 0</h2>
 <!-- https://freesound.org/people/Dirtjm/sounds/262279/ -->
 <audio id="effectAudio" src="sounds/grunt.wav" controls></audio>
 
@@ -27,6 +28,7 @@ const cells = []; // the HTML elements - our "view"
 
 let randX;
 let randY;
+let count = 0;
 
 // faking an enumeration here
 const keyboard = Object.freeze({
@@ -245,8 +247,7 @@ function movePlayer(e){
 				nextLevel();
 			}
 			//if we are not moving levels we just move normally
-			moveEnemy();
-			
+			moveEnemy();			
 			return true;
 		}else{
 			//effectAudio.play();
@@ -260,6 +261,9 @@ function movePlayer(e){
 	}
 	if(checkSpaceEnemy()){
 		death();
+	}
+	if(checkSpacePrisoner()){
+		prisonerCount();
 	}
 }
 
@@ -337,9 +341,20 @@ function checkSpaceKey(){
 		else{
 			return false;
 		}
+	}	
+}
+
+function checkSpacePrisoner(){
+	for(let i = 0; i < currentGameObjects.length; i++){
+		if(currentGameObjects[i].type == "prisoner"){
+			if(player.x == currentGameObjects[i].x && player.y == currentGameObjects[i].y){
+				return true;
+			}
+			else{
+				return false;
+			}
+		}
 	}
-	
-	
 }
 
 function death(){
@@ -350,6 +365,19 @@ function death(){
 function win(){
 	document.querySelector("#gridContainer").innerHTML = "";
 	document.querySelector("h1").innerHTML = "You Win!";
+}
+
+function prisonerCount(){	
+	count++;
+	document.querySelector("h2").innerHTML = "Prisoner Saved: " + count;
+	// for(let i = 0; i < currentGameObjects.length; i++){
+	// 	if(currentGameObjects[i].type == "prisoner"){
+	// 		if(player.x == currentGameObjects[i].x && player.y == currentGameObjects[i].y){
+	// 			//make it so that the obejct gets removed from the scene after being hit.
+	// 			currentGameObjects[i].removeChild();
+	// 		}
+	// 	}
+	// }
 }
 
 
