@@ -33,6 +33,7 @@ const worldTile = Object.freeze({
 
 // the "grunt" sound that plays when the player attempts to move into a wall or water square
 let effectAudio = undefined;
+let growlAudio = undefined;
 
 // level data is over in gamedata.js
 let worldX = 0;
@@ -82,7 +83,10 @@ function startGame(){
 	loadLevel(worldX, worldY);
 	drawGameObjects(currentGameObjects);
 	effectAudio = document.querySelector("#effectAudio");
-	effectAudio.volume = 0.2;;
+	effectAudio.volume = 0.2;
+    growlAudio = document.querySelector("#growlAudio");
+    growlAudio.volume = 0.3;
+
 	setupEvents();
 }
 
@@ -97,7 +101,10 @@ function nextLevel(){
 	loadLevel(worldX, worldY);
 	drawGameObjects(currentGameObjects);
 	effectAudio = document.querySelector("#effectAudio");
-	effectAudio.volume = 0.2;;
+	effectAudio.volume = 0.2;
+    growlAudio = document.querySelector("#growlAudio");
+    growlAudio.volume = 0.3;
+
 	setupEvents();
 }
 
@@ -250,7 +257,7 @@ function movePlayer(e){
 			moveEnemy();			
 			return true;
 		}else{
-			//effectAudio.play();
+			effectAudio.play();
 			moveEnemy();
 			return false;
 		}
@@ -405,6 +412,10 @@ var x = setInterval(function() {
 
 		min = minutes;
 		sec = seconds;
+
+        if(seconds == 5 || seconds == 15 || seconds == 25 || seconds == 35 || seconds == 45 || seconds == 55){
+            growlAudio.play();
+        }
 		
 		// If the count down is over, write some text 
 		if (distance < 0) {
