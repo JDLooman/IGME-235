@@ -1,6 +1,9 @@
 * {
     box-sizing: border-box;
 }
+html{
+    scroll-behavior: smooth;
+}
 body{
     margin: 0px;
 }
@@ -9,18 +12,25 @@ body{
     grid-template-areas:
     "header"
     "main"
-    "skills"
     "games"
     "contacts";
-    grid-template-rows: 100px 500px .5fr 1fr 250px;
+    grid-template-rows: 100px 500px 1fr 150px;
     background-color: azure;
+    font-family: 'Times New Roman', Times, serif;
 }
 @media screen and (max-width:1200px){
     #header h1{
         display: none;
     }
     #about img{
-        display: none;
+        width: 200px;
+        height: 200px;        
+    }
+    #games{
+        padding-top: 20rem;
+    }
+    #wrapper{
+        grid-template-rows: 100px 500px 1fr 250px;
     }
 }
 #header{
@@ -35,12 +45,13 @@ body{
     width: 10em;
     text-align: left;
 }
+/* Menu */
 ul.menu{
     display: flex;
     padding: 1em;
     gap: 5px;
-    justify-content: center;
-    width: 100%;
+    justify-content: right;
+    width: 70%;
     margin: 0 auto;
     font-size: 20px;
 }
@@ -49,13 +60,31 @@ ul.menu{
     align-self: center;
     justify-content: center;
     width: 20%;
+    background-color: black;
+    border-radius: 5%;
 }
 .menu a{
     display: block;
     padding: 15px;
     text-align: center;
-
 }
+a:link{
+    text-decoration: none;
+    color: white;
+}
+a:visited{
+    text-decoration: underline;
+    color: aqua;
+}
+a:hover{
+    text-decoration: underline;
+    color: aqua;
+}
+a:active{
+    text-decoration: underline;
+    color: aqua;
+}
+/* About */
 #about{
     grid-area: main;
     display: flex;
@@ -80,19 +109,13 @@ ul.menu{
     border-bottom: 3px solid aqua;
     border-left: 3px solid aqua;
 }
-#skills{
-    grid-area: skills;
-    font-size: 30px;
-}
-#skills h2{
-    padding-left: .2em;
-    border-left: 6px solid aqua;
-}
+/* Games */
 #games{
     grid-area: games;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    margin-top: 3em;
 }
 #games article{
     grid-area: games;
@@ -100,23 +123,40 @@ ul.menu{
     max-width: 600px;
     min-height: 500px;
     flex-flow: row wrap;
-    margin: 1rem;
+    margin-left: 3em;
+    margin-right: 3em;
+    margin-bottom: 2rem;
     display: flex;
     justify-content: center;
-    background-color: bisque;
+    background-color: rgba(255, 228, 196, 0.555);
+    border-radius: 5%;
 }
 #games img{
-    margin-top: .2em;
+    margin-top: .5em;
     flex-flow: row wrap;
 }
 #games .description{
     flex-flow: row wrap;
-    flex: 0 0 100%;
-    margin-left: 1em;
-    margin-right: 1em;
+    margin: 1em;
 }
+/* Contacts */
 #contacts{
     grid-area: contacts;
     font-size: 25px;
-    background-color: azure;
+    color: white;
+    background-color: rgb(0, 0, 0);
+}
+ul.contact{
+    display: flex;
+    gap: 100px;
+    justify-content: center;
+    width: 100%;
+    margin: 0 auto;
+    font-size: 20px;
+}
+.contact li{
+    display: inline-block;
+}
+.constacts h2{
+    padding-left: 2em;
 }
