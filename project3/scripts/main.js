@@ -58,7 +58,7 @@ window.onload = ()=>{
 	//setting the text to null in our starty menu
 	document.querySelector("h1").innerHTML = "";
 	document.querySelector("p").innerHTML = "";
-	document.querySelector("h3").innerHTML = "You are trapped in a prison. Find the key before time runs out. But be ware, there are gaurds all around.";
+	document.querySelector("h3").innerHTML = "You are trapped in a prison. Find the key before time runs out. But beware, there are guards all around.";
 
 	document.querySelector(".start").onclick = startGame;
 }
